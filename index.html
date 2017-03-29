@@ -8,6 +8,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
         <script type="text/javascript" src = "controllers/app.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
 	</head>
 	<body ng-controller = "mainController as mainCtrl">
 		<nav class = "navbar navbar-default">
@@ -17,9 +18,20 @@
 				</div>
 			</div>
 		</nav>
-		<input type = "textbox" ng-model = "search" placeholder = "Enter a movie name">
+		<input type = "textbox" id = "search-bar" ng-model = "search" placeholder = "Enter a movie name">
 		<button class = "btn btn-primary" ng-click = "mainCtrl.getMovie()">Search Movies</button>
-		<p>{{mainCtrl.movieName}}</p>
-		<p>{{mainCtrl.url}}</p>
+		<p><h2>{{details.Title}}</h2>{{details.Year}}</p>
+		<div><p><h5>Starring:</h5>{{details.Actors}}</p></div>
+		<div><img src= {{details.Poster}}></div>
+		<div class = "description">
+			<p>{{details.Plot}}</p>
+		</div>
+		<div class = "related">
+			<b>Related Movies</b>
+			<ul>
+				<li ng-repeat = "movie in related.Search">
+					<b>{{movie.Title}}</b>,{{movie.Year}}
+				</li>
+			</ul>			
 	</body>
 </html>
